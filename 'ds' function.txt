@@ -1,0 +1,17 @@
+function [ compressed_matrix ] = ds (matrix , o)
+% Define the compressed size
+compressed_size = [o, o];
+% Calculate the row and column index ranges for each compressed cell
+row_range = linspace(1, O, compressed_size(1)+1);
+col_range = linspace(1, O, compressed_size(2)+1);
+% Compress the matrix
+compressed_matrix = zeros(compressed_size);
+for a = 1:compressed_size(1)
+    for b = 1:compressed_size(2)
+       % Calculate the coordinate ranges for each compressed cell
+       row_indices = round(row_range(a):row_range(a+1)-1);
+       col_indices = round(col_range(b):col_range(b+1)-1);
+       % Interpolate the data within the cell (using mean interpolation here)
+       compressed_matrix(a,b) = mean(mean(matrix(row_indices, col_indices)));
+    end
+end
